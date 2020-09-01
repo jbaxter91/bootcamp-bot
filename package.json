@@ -1,0 +1,23 @@
+{
+  "name": "bootcamp-bot",
+  "version": "1.0.0",
+  "description": "This script will sign you into bootcampspot, check if you can sign into a class, then attempt to sign you in.  If it is successful, it will then open up zoom for you.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbaxter91/bootcamp-bot.git"
+  },
+  "author": "John Baxter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jbaxter91/bootcamp-bot/issues"
+  },
+  "homepage": "https://github.com/jbaxter91/bootcamp-bot#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "puppeteer": "^5.2.1"
+  }
+}
