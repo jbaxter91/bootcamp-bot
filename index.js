@@ -1,13 +1,12 @@
 const puppeteer = require("puppeteer");
 require('dotenv').config();
 
-const LOGIN = "";
-const PASSWORD = "";
 
 const login_url = "https://www.bootcampspot.com/login";
 const checkin_url = "https://www.bootcampspot.com/sessions";
 
 (async () => {
+
     // Initialize browser
     const browser = await puppeteer.launch();
     // Start a new page
@@ -21,8 +20,8 @@ const checkin_url = "https://www.bootcampspot.com/sessions";
     await page.waitFor('input[name=emailAddress]');
 
     // Now that we know the input boxes are there, we need to set their data
-    await page.type('#emailAddress', LOGIN);
-    await page.type('#password', PASSWORD);
+    await page.type('#emailAddress', process.env.BCS_LOGIN);
+    await page.type('#password', process.env.BCS_PASSWORD);
 
     // We then want to hit the submit button
     await page.keyboard.press('Enter');
@@ -46,6 +45,10 @@ const checkin_url = "https://www.bootcampspot.com/sessions";
     if (button) {
         console.log("Found check in!, Clicking that SHIZZ!");
         await button.click();
+    }
+    else
+    {
+        console.log("Could not find Button!");
     }
 
     // WE DONE!!
