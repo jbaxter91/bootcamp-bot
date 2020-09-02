@@ -31,25 +31,25 @@ const checkin_url = "https://www.bootcampspot.com/sessions";
     console.log('New Page URL:', page.url());
     
     // Herre we wait until we know the home screen is loded because the element can be found ".card-title-month"
-    await page.waitFor('.card-title-month');
+    await page.waitFor('.card-title-month'); 
 
     // Now that we know we are in, we navigate to sessions url
     await page.goto(checkin_url);
 
-    // We then want to start a loop looking for the text "Check in to class"
-    // if its not there then we wait
-    // If it is there we select it and click it
-    // TADA! we done!
+    console.log("Navigating to checkin url... waiting for page loaded");
 
-    setTimeout( async ()=> 
-    {
-        // Displays the current html of page
-        moreContent = await page.evaluate(() => document.body.innerText);
-        console.log(moreContent);
-        console.log('New Page URL:', page.url());
-        await browser.close();
+    await page.waitFor('.card-title-time');
 
-    }, 3000);
+    console.log("Page loaded!  Now to find 'Check In To Class'");
+
+    const [button] = await page.$x("//a[contains(., ' Check In To Class')]");
+    if (button) {
+        console.log("Found check in!, Clicking that SHIZZ!");
+        await button.click();
+    }
+
+    // WE DONE!!
+    await browser.close();
 
     
   })();
