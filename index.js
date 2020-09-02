@@ -48,7 +48,7 @@ const checkin_url = "https://www.bootcampspot.com/sessions";
     }
     else
     {
-        console.log("Could not find Button!");
+        console.log("Could not find Button!, We are on page ", page.url() );
     }
 
     // WE DONE!!
